@@ -1,5 +1,7 @@
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NoDrugs;
+using Resources = NoDrugs.Properties.Resources;
 
 namespace AppTests
 {
@@ -39,6 +41,15 @@ namespace AppTests
 		public void LoadNullSourceTextTest()
 		{
 			Assert.AreEqual(false, text.LoadSourceText(null));
+		}
+
+		/// <summary>
+		/// Проверка наличия сообщения со сведениями о программе.
+		/// </summary>
+		[TestMethod]
+		public void GetAboutMessage()
+		{
+			Assert.IsNotNull(Resources.InfoMessage);
 		}
 	}
 }
