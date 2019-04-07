@@ -11,7 +11,7 @@ namespace NoDrugs
 {
 	public static class FileHelper
 	{
-		public static readonly string resourcePath = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "Resources");
+		public static readonly string ResourcePath = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.FullName, "Resources");
 
 		public static void AddWord()
 		{

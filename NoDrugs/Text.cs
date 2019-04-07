@@ -11,41 +11,51 @@ using NoDrugs.Properties;
 
 namespace NoDrugs
 {
-	internal class Text
+	public class Text
 	{
-		internal HashSet<string> vocabulary = new HashSet<string>();
-		internal HashSet<string> sourceText = new HashSet<string>();
+		public HashSet<string> Vocabulary = new HashSet<string>();
+		public HashSet<string> SourceText = new HashSet<string>();
 		private string notDigitsAndNumbersPattern = @"[^A-Za-zА-Яа-я]+";
 
-		internal void LoadVocabulary()
+		public void LoadVocabulary()
 		{
-			vocabulary.Clear();
+			Vocabulary.Clear();
 			foreach (var word in Resources.NoDrugsVocabulary.Split(';'))
 			{
-				vocabulary.Add(word.ToLower());
+				Vocabulary.Add(word.ToLower());
 			}
 		}
 
-		internal void LoadSourceText(string text)
+		public bool LoadSourceText(string text)
 		{
+			var isLoaded = false;
+
+			if (string.IsNullOrWhiteSpace(text))
+			{
+				return isLoaded;
+			}
+
 			foreach (var word in text.Split(' '))
 			{
-				sourceText.Add(Regex.Replace(word, notDigitsAndNumbersPattern, string.Empty).ToLower());
+				SourceText.Add(Regex.Replace(word, notDigitsAndNumbersPattern, string.Empty).ToLower());
+				isLoaded = true;
 			}
+
+			return isLoaded;
 		}
 
-		internal void CheckText(RichTextBox rtb)
+		public void CheckText(RichTextBox rtb)
 		{
 			if (rtb == null)
 			{
 				return;
 			}
 
-			var entryWords = sourceText.Intersect(vocabulary);
+			var entryWords = SourceText.Intersect(Vocabulary);
 			RepaintEntryWords(rtb, entryWords);
 		}
 
-		internal void RepaintEntryWords(RichTextBox rtb, IEnumerable<string> repaintWords)
+		public void RepaintEntryWords(RichTextBox rtb, IEnumerable<string> repaintWords)
 		{
 			if (rtb == null || repaintWords == null)
 			{

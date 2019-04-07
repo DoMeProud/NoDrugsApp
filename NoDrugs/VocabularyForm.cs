@@ -30,7 +30,7 @@ namespace NoDrugs
 			Close();
 		}
 
-		internal void LoadVocabulary()
+		public void LoadVocabulary()
 		{
 			VocabularyBox.Items.Clear();
 			foreach (var word in Resources.NoDrugsVocabulary.Split(';'))
@@ -57,7 +57,7 @@ namespace NoDrugs
 
 		private void RewriteVocabulary(string text)
 		{
-			using (var writer = new StreamWriter(Path.Combine(FileHelper.resourcePath, "NoDrugsVocabulary.txt"), false, Encoding.UTF8))
+			using (var writer = new StreamWriter(Path.Combine(FileHelper.ResourcePath, "NoDrugsVocabulary.txt"), false, Encoding.UTF8))
 			{
 				writer.Write(text.Replace(";;", ";"));
 			}
