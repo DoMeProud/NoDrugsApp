@@ -117,11 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="InfoMessage" xml:space="preserve">
-    <value>Данное приложение выполнено стуендтами ЮЗГУ, группы ПО-51б: Котов Илья, Полякова Екатерина, Шамин Кирилл, Рюмшина Анна. Приложение предназначено для поиска слов в тексте, которые относятся к наркотической тематике. При нахождении подобных слов они будут выделены красным цветом. Поиск происходит в соответствии со словарем.</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NoDrugsVocabulary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NoDrugsVocabulary.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
 </root>
