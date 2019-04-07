@@ -12,24 +12,43 @@ using NoDrugs.Properties;
 
 namespace NoDrugs
 {
+	/// <summary>
+	/// Форма словаря.
+	/// </summary>
 	public partial class VocabularyForm : Form
 	{
+		/// <summary>
+		/// Инициализация компонентов.
+		/// </summary>
 		public VocabularyForm()
 		{
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Метод-обработчик загрузки формы.
+		/// </summary>
+		/// <param name="sender">Отправитель.</param>
+		/// <param name="e">Аргументы.</param>
 		private void VocabularyForm_Load(object sender, EventArgs e)
 		{
 			LoadVocabulary();
 		}
 
+		/// <summary>
+		/// Обработка нажатия кнопки "Добавить".
+		/// </summary>
+		/// <param name="sender">Отправитель.</param>
+		/// <param name="e">Аргументы.</param>
 		private void AddBtn_Click(object sender, EventArgs e)
 		{
 			FileHelper.AddWord();
 			Close();
 		}
 
+		/// <summary>
+		/// ЗЗагрузить данные словаря.
+		/// </summary>
 		public void LoadVocabulary()
 		{
 			VocabularyBox.Items.Clear();
@@ -39,6 +58,11 @@ namespace NoDrugs
 			}
 		}
 
+		/// <summary>
+		/// Обработка нажатия кнопки "Удалить".
+		/// </summary>
+		/// <param name="sender">Отправитель.</param>
+		/// <param name="e">Аргументы.</param>
 		private void DeleteBtn_Click(object sender, EventArgs e)
 		{
 			if (VocabularyBox.Text == null)
@@ -55,6 +79,10 @@ namespace NoDrugs
 
 		}
 
+		/// <summary>
+		/// Переписать файл словаря.
+		/// </summary>
+		/// <param name="text">Текст.</param>
 		private void RewriteVocabulary(string text)
 		{
 			using (var writer = new StreamWriter(Path.Combine(FileHelper.ResourcePath, "NoDrugsVocabulary.txt"), false, Encoding.UTF8))

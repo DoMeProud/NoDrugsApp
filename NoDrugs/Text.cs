@@ -11,12 +11,29 @@ using NoDrugs.Properties;
 
 namespace NoDrugs
 {
+	/// <summary>
+	/// Работа с текстом.
+	/// </summary>
 	public class Text
 	{
+		/// <summary>
+		/// Словарь.
+		/// </summary>
 		public HashSet<string> Vocabulary = new HashSet<string>();
-		public HashSet<string> SourceText = new HashSet<string>();
-		private string notDigitsAndNumbersPattern = @"[^A-Za-zА-Яа-я]+";
 
+		/// <summary>
+		/// Текст для проверки.
+		/// </summary>
+		public HashSet<string> SourceText = new HashSet<string>();
+
+		/// <summary>
+		/// Паттерн для поиска не букв.
+		/// </summary>
+		private string notLettersPattern = @"[^A-Za-zА-Яа-я]+";
+
+		/// <summary>
+		/// Загрузка словаря.
+		/// </summary>
 		public void LoadVocabulary()
 		{
 			Vocabulary.Clear();
@@ -26,6 +43,11 @@ namespace NoDrugs
 			}
 		}
 
+		/// <summary>
+		/// Загрузка текста для проверки.
+		/// </summary>
+		/// <param name="text">Текст для проверки.</param>
+		/// <returns>Успешность добавления текста на проверку.</returns>
 		public bool LoadSourceText(string text)
 		{
 			var isLoaded = false;
@@ -37,13 +59,17 @@ namespace NoDrugs
 
 			foreach (var word in text.Split(' '))
 			{
-				SourceText.Add(Regex.Replace(word, notDigitsAndNumbersPattern, string.Empty).ToLower());
+				SourceText.Add(Regex.Replace(word, notLettersPattern, string.Empty).ToLower());
 				isLoaded = true;
 			}
 
 			return isLoaded;
 		}
 
+		/// <summary>
+		/// Проверка текста.
+		/// </summary>
+		/// <param name="rtb">Текстовый блок для ввода текста.</param>
 		public void CheckText(RichTextBox rtb)
 		{
 			if (rtb == null)
@@ -55,6 +81,11 @@ namespace NoDrugs
 			RepaintEntryWords(rtb, entryWords);
 		}
 
+		/// <summary>
+		/// Окрашивание слов, которые подходят по условию.
+		/// </summary>
+		/// <param name="rtb">Текстовый блок для ввода текста.</param>
+		/// <param name="repaintWords">Слова для окрашивания</param>
 		public void RepaintEntryWords(RichTextBox rtb, IEnumerable<string> repaintWords)
 		{
 			if (rtb == null || repaintWords == null)
