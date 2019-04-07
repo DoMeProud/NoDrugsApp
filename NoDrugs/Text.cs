@@ -29,7 +29,7 @@ namespace NoDrugs
 		/// <summary>
 		/// Паттерн для поиска не букв.
 		/// </summary>
-		private string notLettersPattern = @"[^A-Za-zА-Яа-я]+";
+		private readonly string notLettersPattern = @"[^A-Za-zА-Яа-я]+";
 
 		/// <summary>
 		/// Загрузка словаря.
